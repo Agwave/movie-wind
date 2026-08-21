@@ -1,0 +1,16 @@
+# 影片 → 上市公司映射表（只收录 A 股上市公司 + 港股通标的港股）
+#
+# 匹配优先级：ids（猫眼 movieId）> names 精确匹配
+# role: producer（默认）| distributor（仅重要发行，须写 note）
+# core: true 标记对该公司业绩弹性大的片子
+
+companies:
+  # 样例占位：归属请用 data/update_movies_yaml.md 核实后修正
+  - company: 光线传媒
+    code: "300251.SZ"
+    market: A股
+    films:
+      - ids: [1462628]
+        names: [欢迎来龙餐馆]
+        role: producer
+        note: 待核实出品关系
