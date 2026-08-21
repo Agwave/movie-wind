@@ -166,7 +166,26 @@ Markdown，推企业微信（超长按行拆条；同日同内容指纹防重，
 
 ## 6. 架构与命令
 
-技术栈：**Go** CLI（对齐 game-wind）。
+技术栈：**Go** CLI。
+
+### 6.1 工程对齐 game-wind（强制）
+
+目录、工程约定与质量门禁 **直接参照** `game-wind`，除非本规格另有业务差异。实现时应复制/改编而非另起炉灶，包括但不限于：
+
+| 项 | 对齐方式 |
+|----|----------|
+| 布局 | `cmd/moviewind`、`internal/{fetch,store,mapping,analyze,report,notify,config}`、`data/`、`docs/`、`bin/`、`logs/` |
+| 模块文件 | `go.mod` / `go.sum`、`config.yaml`、`config.local.yaml`（gitignore） |
+| 质量 | `.golangci.yml`（可原样或微调）、`AGENTS.md`、`CLAUDE.md` → `AGENTS.md` 符号链接 |
+| 法务 / 说明 | `LICENSE`（MIT，版权信息按本仓库作者）、`README.md`（+ 可选 `README.en.md`） |
+| `.gitignore` | 对齐 game-wind（`bin/`、`config.local.yaml`、`logs/` 等）并保留本仓库探测文件规则 |
+| commit 格式 | 同 AGENTS：`[类型](模块): 描述`；模块名沿用 fetch/mapping/store/analyze/report/notify/config/cli/tests |
+| 改完检查 | 同 AGENTS：`gofmt` → `go vet` → `golangci-lint`（0 issues）→ `go test ./...` |
+| 代码风格 | 包边界、CLI 旗标、`--dry-run` / `--date` / `--data-dir`、企微拆条与指纹去重等行为对齐 game-wind |
+
+业务差异只体现在：`fetch`（猫眼）、`analyze`（日票房 Top10）、`mapping`（`movies.yaml`）、`report` 段落结构。
+
+### 6.2 运行流水线
 
 ```
 cron 08:00 → moviewind run
@@ -181,23 +200,13 @@ cron 08:00 → moviewind run
 | `moviewind list` | 列出已有快照 |
 | `--data-dir` | 默认 `data/` |
 
-包划分（示意）：
-
-- `cmd/moviewind`
-- `internal/fetch`
-- `internal/store`
-- `internal/mapping`
-- `internal/analyze`
-- `internal/report`
-- `internal/notify`
-- `internal/config`
-
 配置：
 
 - `config.yaml`（入库）：`top_n: 10`、`summary_rank_move: 3`、`notify.notify_when_quiet: true` 等
 - `config.local.yaml`（gitignore）：`notify.webhook_url`
 
 快照：`data/YYYY-MM-DD.json`；状态：`data/state.json`；报告可选落盘 `data/reports/YYYY-MM-DD.md`。
+映射：`data/movies.yaml` + `data/update_movies_yaml.md`（对应 game-wind 的 `games.yaml` / `update_game_yaml.md`）。
 
 ## 7. 已确认决策一览
 
@@ -216,6 +225,7 @@ cron 08:00 → moviewind run
 | 按公司段 | yaml 全部公司 |
 | 语言 | Go |
 | 仓库 | 已 `git init` |
+| 工程骨架 | 对齐 game-wind（目录、golangci、AGENTS、LICENSE、commit/检查约定、包设计） |
 
 ## 8. 风险与后续
 
@@ -225,9 +235,10 @@ cron 08:00 → moviewind run
 
 ## 9. 实现顺序（进入计划后展开）
 
-1. 模块骨架 + config + store  
-2. fetch 猫眼 + 累计解析  
-3. movies.yaml 映射 + 维护提示词  
-4. analyze：差分、Top10、标记、总结素材  
-5. report + notify  
-6. CLI `run/fetch/report/list` + README + 示例 cron  
+1. 从 game-wind 落地工程骨架（`go.mod`、`.golangci.yml`、`AGENTS.md`/`CLAUDE.md`、`LICENSE`、`.gitignore`、空包与 CLI 骨架）  
+2. config + store（快照 / state，对齐既有模式）  
+3. fetch 猫眼 + 累计解析  
+4. movies.yaml 映射 + 维护提示词  
+5. analyze：差分、Top10、标记、总结素材  
+6. report + notify（企微行为对齐 game-wind）  
+7. 串 `run/fetch/report/list` + README + 示例 cron  
