@@ -1,16 +1,101 @@
 # 影片 → 上市公司映射表（只收录 A 股上市公司 + 港股通标的港股）
 #
 # 匹配优先级：ids（猫眼 movieId）> names 精确匹配
-# role: producer（默认）| distributor（仅重要发行，须写 note）
+# role: producer（默认，含联合出品）| distributor（仅重要发行，须写 note）
 # core: true 标记对该公司业绩弹性大的片子
+#
+# ids/names 对照自 2026-08-21 快照；归属依据见各条目 note（媒体报道/公司互动回应）
 
 companies:
-  # 样例占位：归属请用 data/update_movies_yaml.md 核实后修正
-  - company: 光线传媒
-    code: "300251.SZ"
+  # ================= 中国电影 600977.SH =================
+  - company: 中国电影
+    code: "600977.SH"
     market: A股
     films:
       - ids: [1462628]
         names: [欢迎来龙餐馆]
         role: producer
-        note: 待核实出品关系
+        note: 出品方之一（多家媒体/公司接线确认参投）
+      - ids: [1525868]
+        names: [八仙！]
+        role: producer
+        note: 公司确认参投/出品
+      - ids: [1500469]
+        names: [功夫女足]
+        role: distributor
+        note: 重要联合发行；公司称未参与投资、保留出品署名——不按出品计业绩弹性
+      - ids: [1545360]
+        names: [奥德赛]
+        role: distributor
+        note: 公司确认为发行方（重要发行）
+
+  # ================= 儒意电影 002739.SZ（原万达电影）=================
+  - company: 儒意电影
+    code: "002739.SZ"
+    market: A股
+    films:
+      - ids: [1462628]
+        names: [欢迎来龙餐馆]
+        role: producer
+        core: true
+        note: 出品方及联合发行方（公司互动平台/媒体确认）
+      - ids: [1525868]
+        names: [八仙！]
+        role: producer
+        core: true
+        note: 出品方之一（公司互动平台确认）
+      - ids: [1525000]
+        names: [年会不能停！2]
+        role: producer
+        note: 出品方之一（公司互动平台确认）
+
+  # ================= 北京文化 000802.SZ =================
+  - company: 北京文化
+    code: "000802.SZ"
+    market: A股
+    films:
+      - ids: [1462628]
+        names: [欢迎来龙餐馆]
+        role: producer
+        core: true
+        note: 联合出品；上映前后股价曾连续涨停（媒体报道/公司接线）
+      - ids: [1525000]
+        names: [年会不能停！2]
+        role: producer
+        note: 公司确认参投
+
+  # ================= 博纳影业 001330.SZ =================
+  - company: 博纳影业
+    code: "001330.SZ"
+    market: A股
+    films:
+      - ids: [1462628]
+        names: [欢迎来龙餐馆]
+        role: producer
+        note: 联合出品/参投（公司接线确认）
+      - ids: [1545588]
+        names: [四渡]
+        role: producer
+        core: true
+        note: 公司称主投
+
+  # ================= 横店影视 603103.SH =================
+  - company: 横店影视
+    code: "603103.SH"
+    market: A股
+    films:
+      - ids: [1462628]
+        names: [欢迎来龙餐馆]
+        role: producer
+        note: 联合出品方含横店影视（猫眼/媒体披露名单）
+
+  # ================= 光线传媒 300251.SZ =================
+  - company: 光线传媒
+    code: "300251.SZ"
+    market: A股
+    films:
+      - ids: [1375786]
+        names: [去你的岛]
+        role: producer
+        core: true
+        note: 光线动画全资子公司出品/主制宣发；公司称未参与《欢迎来龙餐馆》《功夫女足》

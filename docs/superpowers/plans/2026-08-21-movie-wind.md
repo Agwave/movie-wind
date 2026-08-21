@@ -9,7 +9,7 @@
 **Tech Stack:** Go 1.22、`gopkg.in/yaml.v3`、标准库 HTTP/JSON；质量门禁同 game-wind（`gofmt` / `vet` / `golangci-lint` / `go test`）。
 
 参考规格：`docs/superpowers/specs/2026-08-21-movie-wind-design.md`。  
-参考实现：`../game-wind/`（同机路径 `/home/chenyinbo/personal/project/game-wind`）。
+参考实现：同级仓库 `game-wind`（包结构与 CLI 对齐）。
 
 **金额单位约定（全项目）：** 累计票房与日票房一律用 `float64`，单位 **万元**。`ParseSumBox`：`12.97亿`→`129700`，`8974.0万`→`8974`，纯数字按「元」÷10000。
 
@@ -49,12 +49,12 @@
 - [ ] **Step 1: 初始化 module 与质量文件**
 
 ```bash
-cd /home/chenyinbo/personal/project/movie-wind
+cd /path/to/movie-wind
 source ~/.g/env
 go mod init movie-wind
 go get gopkg.in/yaml.v3@v3.0.1
-cp /home/chenyinbo/personal/project/game-wind/.golangci.yml .
-cp /home/chenyinbo/personal/project/game-wind/LICENSE .
+cp ../game-wind/.golangci.yml .
+cp ../game-wind/LICENSE .
 ```
 
 重写 `.gitignore` 为：
@@ -907,7 +907,7 @@ const (
 
 `cmdRun`：先 fetch（除非 `--date` 指向已有快照且你选择跳过——对齐 game-wind：`--date` 时用已有快照不重新抓，或仍允许重抓覆盖；**采用与 game-wind 相同：run 总是先抓取写入当日，再用该日分析**；若指定 `--date` 则只分析该日已有文件不抓取）。
 
-对齐 game-wind 行为请直接读 `/home/chenyinbo/personal/project/game-wind/cmd/gamewind/main.go` 的 `cmdRun`/`cmdReport` 并改编。
+对齐 game-wind 行为请直接读 `game-wind/cmd/gamewind/main.go` 的 `cmdRun`/`cmdReport` 并改编。
 
 - [ ] **Step 2: 编译与本地 dry-run**
 

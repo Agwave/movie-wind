@@ -5,7 +5,12 @@
 ## 一、先读
 
 1. `data/movies.yaml` —— 当前映射表  
-2. 最新快照 `data/YYYY-MM-DD.json`（可先 `source ~/.g/env && go run ./cmd/moviewind fetch`）  
+2. **最新快照** —— `data/` 下日期最新的 `YYYY-MM-DD.json`  
+   - **已有快照就直接用**（优先读最新日期文件；也可参考 `data/reports/` 最新报告的「待补全」）  
+   - **仅当不存在快照**，或日期明显过期（非最近 1～2 天），且环境可联网时，再执行：  
+     ```bash
+     source ~/.g/env && go run ./cmd/moviewind fetch
+     ```  
 3. 需要时联网核实出品 / 联合出品 / 发行方  
 
 ## 二、快照结构
