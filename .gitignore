@@ -1,16 +1,11 @@
-# 本地敏感配置
-config.local.yaml
-
-# 构建产物
-bin/
+/bin/
 *.exe
-
-# 探测/临时抓取（非正式快照）
+config.local.yaml
+/data/*.json
+/data/reports/
+/logs/
 maoyan-live.json
 maoyan-live-parsed.json
-
-# 日志与 IDE
-logs/
 .idea/
 .vscode/
 *.swp

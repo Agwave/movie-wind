@@ -1,0 +1,5 @@
+top_n: 10
+summary_rank_move: 3
+notify:
+  notify_when_quiet: true
+  # webhook_url 放 config.local.yaml
