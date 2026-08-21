@@ -55,4 +55,15 @@ source ~/.g/env && gofmt -w cmd internal && go build ./... && go vet ./... && go
 | 运行单个用例（带详细输出） | `go test -run TestBaseline -v ./internal/analyze/` |
 | 绕过缓存强制重跑 | `go test -count=1 ./...` |
 
-**现有测试清单**：随实现追加（见各 `*_test.go`）。
+**现有测试清单**：
+
+| 包 | 用例 | 覆盖内容 |
+|---|---|---|
+| `internal/config` | `TestLoadDefaultsAndOverride` / `TestLoadMissingUsesDefaults` | 配置加载与默认值 |
+| `internal/fetch` | `TestParseSumBox` / `TestParseDashboard` | 累计票房与猫眼 JSON |
+| `internal/store` | `TestSaveLoadLatestBefore` | 快照与 state |
+| `internal/mapping` | `TestMatchAllByIDAndName` / `TestLoadRequiresCompany` | 多公司匹配 |
+| `internal/analyze` | `TestBaseline` / `TestTop10OrderAndMarks` / `TestUnmapped` / `TestSummaryNewAndMove` | 日票房 Top10 |
+| `internal/report` | `TestBuildSections` / `TestBuildBaseline` | 报告四段 |
+| `internal/notify` | `TestBuildMessagesShort` / `TestBuildMessagesSplit` | 企微拆条 |
+
