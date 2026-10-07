@@ -4,7 +4,7 @@
 # role: producer（默认，含联合出品）| distributor（仅重要发行，须写 note）
 # core: true 标记对该公司业绩弹性大的片子
 #
-# ids/names 对照自 2026-08-21 快照；归属依据见各条目 note（媒体报道/公司互动回应）
+# ids/names 对照自 2026-10-07 快照；归属依据见各条目 note（媒体报道/公司互动回应）
 
 companies:
   # ================= 中国电影 600977.SH =================
@@ -20,6 +20,18 @@ companies:
         names: [八仙！]
         role: producer
         note: 公司确认参投/出品
+      - ids: [1604748]
+        names: [什么意思夫妇]
+        role: producer
+        note: 出品方之一（上证报/证券日报列名中国电影，中影傅若清任总监制）
+      - ids: [1552906]
+        names: [神探之痕迹]
+        role: producer
+        note: 联合出品（证券时报「票房第一，背后公司有它们」列名中国电影等联合出品）
+      - ids: [1528975]
+        names: [小猪佩奇·完美假期]
+        role: producer
+        note: 出品方之一（中国电影股份有限公司列名出品方）
       - ids: [1500469]
         names: [功夫女足]
         role: distributor
@@ -28,6 +40,18 @@ companies:
         names: [奥德赛]
         role: distributor
         note: 公司确认为发行方（重要发行）
+      - ids: [1586199]
+        names: [生化危机：爆发夜]
+        role: distributor
+        note: 进口片内地发行及译制方（中影集团进口）；该片为国庆档后票房第一，属公司进口发行主业
+      - ids: [248172]
+        names: [复仇者联盟4：终局之战（加码臻享版）]
+        role: distributor
+        note: 进口片内地联合发行及译制方（与华夏电影分区发行）；中秋档冠军、重映票房破亿
+      - ids: [1672561]
+        names: [野兽之心]
+        role: distributor
+        note: 进口片内地甲区发行方（乙区为华夏电影）；国庆档唯一进口片
 
   # ================= 儒意电影 002739.SZ（原万达电影）=================
   - company: 儒意电影
@@ -44,10 +68,18 @@ companies:
         role: producer
         core: true
         note: 出品方之一（公司互动平台确认）
+      - ids: [1604748]
+        names: [什么意思夫妇]
+        role: producer
+        note: 出品方之一（公司互动平台确认投资出品；柯利明列名出品人）
       - ids: [1525000]
         names: [年会不能停！2]
         role: producer
         note: 出品方之一（公司互动平台确认）
+      - ids: [1578266]
+        names: [重生2]
+        role: producer
+        note: 出品方之一；已列入公司 2026 半年报待映出品片单
 
   # ================= 北京文化 000802.SZ =================
   - company: 北京文化
@@ -88,6 +120,10 @@ companies:
         names: [欢迎来龙餐馆]
         role: producer
         note: 联合出品方含横店影视（猫眼/媒体披露名单）
+      - ids: [1604748]
+        names: [什么意思夫妇]
+        role: producer
+        note: 出品方之一（财联社/证券日报明确标注 603103.SH）
 
   # ================= 光线传媒 300251.SZ =================
   - company: 光线传媒
@@ -99,3 +135,56 @@ companies:
         role: producer
         core: true
         note: 光线动画全资子公司出品/主制宣发；公司称未参与《欢迎来龙餐馆》《功夫女足》
+
+  # ================= 华策影视 300133.SZ =================
+  - company: 华策影视
+    code: "300133.SZ"
+    market: A股
+    films:
+      - ids: [1528975]
+        names: [小猪佩奇·完美假期]
+        role: producer
+        note: 旗下上海华策电影有限公司为第一出品方及备案单位（2024 年公司官宣项目）
+
+  # ================= 浙版传媒 601921.SH =================
+  - company: 浙版传媒
+    code: "601921.SH"
+    market: A股
+    films:
+      - ids: [1528975]
+        names: [小猪佩奇·完美假期]
+        role: producer
+        note: 联合出品（浙江出版传媒股份有限公司列名联合出品方）
+
+  # ================= 猫眼娱乐 01896.HK（港股通）=================
+  - company: 猫眼娱乐
+    code: "01896.HK"
+    market: 港股通
+    films:
+      - ids: [1552906]
+        names: [神探之痕迹]
+        role: producer
+        note: 天津猫眼文化传媒列名出品方（国庆档票房第一）
+      - ids: [1604748]
+        names: [什么意思夫妇]
+        role: producer
+        note: 天津猫眼文化传媒列名出品方；郑志昊列名出品人
+      - ids: [1528975]
+        names: [小猪佩奇·完美假期]
+        role: producer
+        note: 天津猫眼文化传媒列名出品方
+      - ids: [1578266]
+        names: [重生2]
+        role: producer
+        note: 天津猫眼文化传媒/广州猫眼影业列名出品方
+
+  # ================= 阅文集团 00772.HK（港股通）=================
+  - company: 阅文集团
+    code: "00772.HK"
+    market: 港股通
+    films:
+      - ids: [1552906]
+        names: [神探之痕迹]
+        role: producer
+        core: true
+        note: 旗下新丽传媒为第一出品方（财经网等报道「阅文旗下新丽出品」；新丽另有新丽（上海）影视列名）
